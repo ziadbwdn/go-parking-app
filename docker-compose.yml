@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  parking-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: go-parking-system
+    stdin_open: true    # Enable interactive input (equivalent to -i)
+    tty: true          # Allocate a pseudo-TTY (equivalent to -t)
+    volumes:
+      # Mount input directory for easy test file management
+      - ./input:/app/input:ro
+      # Optional: Mount logs directory if you add logging
+      # - ./logs:/app/logs
+    environment:
+      # Environment variables for the application
+      - APP_ENV=docker
+      - LOG_LEVEL=info
+    # Resource limits (optional)
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 128M
+        reservations:
+          cpus: '0.1'
+          memory: 64M
+    # Restart policy
+    restart: unless-stopped
+    
+    # Health check (optional, for future REST API)
+    healthcheck:
+       test: ["CMD", "./parking", "--health"]
+       interval: 30s
+       timeout: 10s
+       retries: 3
+       start_period: 40s

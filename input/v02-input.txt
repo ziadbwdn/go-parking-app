@@ -1,0 +1,21 @@
+create_parking_lot 4
+park KA-01-HH-1001
+park KA-01-HH-1002
+park KA-01-HH-1003
+park KA-01-HH-1004
+status
+park KA-01-HH-1005
+park KA-01-HH-1006
+park KA-01-HH-1007
+leave KA-01-HH-1002 2
+leave KA-01-HH-1004 3
+park KA-01-HH-2001
+park KA-01-HH-2002
+status
+park KA-01-HH-2003
+leave KA-01-HH-1001 4
+leave KA-01-HH-1003 1
+park KA-01-HH-3001
+park KA-01-HH-3002
+park KA-01-HH-3003
+status
